@@ -9,12 +9,14 @@ a:hover {
   color: #ecf0f1 !important;
 }
 
-.list-group-item-success.active {
+.do-card {
   background-color: #16a085;
   border-color: #16a085;
+  color: #ecf0f1;
 }
 
-.list-group-item-danger.active {
+.dont-card {
   background-color: #c0392b;
   border-color: #c0392b;
+  color: #ecf0f1;
 }

@@ -5,68 +5,68 @@
 <div class="fluid-container">
   <div class="row">
     <div class="col">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item list-group-item-success active">
-          <h3>Do</h3>
-        </li>
-        @for (item of green_list; track item; let first=$first, last=$last) {
-        <li class="list-group-item">
-          <div class="card" style="width: 18rem">
-            <div class="card-body">
-              <h5 class="card-title">{{ item.title }}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{{ item.subtitle }}</h6>
-              <p class="card-text">
-                {{ item.text }}
-              </p>
-            </div>
-            <div class="btn-group">
-              <button
-                type="button"
-                class="btn btn-sm btn-outline-secondary"
-                [disabled]="first"
-              >
-                <i class="bi bi-arrow-up"></i>
-              </button>
-              <button
-                type="button"
-                class="btn btn-sm btn-outline-secondary"
-                [disabled]="last"
-              >
-                <i class="bi bi-arrow-down"></i>
-              </button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">
-                <i class="bi bi-trash"></i>
-              </button>
-            </div>
+      <div class="card mb-3 do-card" style="width: 18rem">
+        <div class="card-body">
+          <div class="cart-title">
+            <h3>Do</h3>
           </div>
-        </li>
-        }
-      </ul>
+        </div>
+      </div>
+      @for (item of green_list; track item; let first=$first, last=$last) {
+      <div class="card mb-3" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ item.subtitle }}</h6>
+          <p class="card-text">
+            {{ item.text }}
+          </p>
+        </div>
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-secondary"
+            [disabled]="first"
+          >
+            <i class="bi bi-arrow-up"></i>
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-secondary"
+            [disabled]="last"
+          >
+            <i class="bi bi-arrow-down"></i>
+          </button>
+          <button type="button" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+      </div>
+      }
     </div>
     <div class="col">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item list-group-item-danger active">
-          <h3>Do not</h3>
-        </li>
-        @for (item of red_list; track item) {
-        <li class="list-group-item">
-          <div class="card" style="width: 18rem">
-            <div class="card-body">
-              <h5 class="card-title">{{ item.title }}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">{{ item.subtitle }}</h6>
-              <p class="card-text">
-                {{ item.text }}
-              </p>
-            </div>
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">
-                <i class="bi bi-plus-circle"></i>
-              </button>
-            </div>
+      <div class="card mb-3 dont-card" style="width: 18rem">
+        <div class="card-body">
+          <div class="cart-title">
+            <h3>Do not</h3>
           </div>
-        </li>
-        }
-      </ul>
+        </div>
+      </div>
+      @for (item of red_list; track item) {
+      <div class="card mb-3" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ item.subtitle }}</h6>
+          <p class="card-text">
+            {{ item.text }}
+          </p>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-plus-circle"></i>
+          </button>
+        </div>
+      </div>
+      }
     </div>
   </div>
 </div>
