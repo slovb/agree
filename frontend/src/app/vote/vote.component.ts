@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './vote.component.html',
-  styleUrl: './vote.component.scss'
+  styleUrl: './vote.component.scss',
 })
-export class VoteComponent {
-
-}
+export class VoteComponent {}

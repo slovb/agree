@@ -9,7 +9,7 @@ import { VoteComponent } from './vote/vote.component';
   standalone: true,
   imports: [RouterOutlet, NavComponent, ResultComponent, VoteComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'agree';
