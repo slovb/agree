@@ -5,7 +5,7 @@
 <div class="fluid-container">
   <div class="row">
     <div class="col">
-      <div class="card mb-3 do-card" style="width: 18rem">
+      <div class="card mb-3 do-card shadow">
         <div class="card-body">
           <div class="cart-title">
             <h3>Do</h3>
@@ -13,38 +13,45 @@
         </div>
       </div>
       @for (item of green_list; track item; let first=$first, last=$last) {
-      <div class="card mb-3" style="width: 18rem">
-        <div class="card-body">
+      <div class="card mb-3 shadow">
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-secondary border-white"
+            [hidden]="first"
+          >
+            <i class="bi bi-arrow-up"></i>
+          </button>
+        </div>
+        <div class="card-body position-relative">
           <h5 class="card-title">{{ item.title }}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{ item.subtitle }}</h6>
           <p class="card-text">
             {{ item.text }}
           </p>
+          <div class="position-absolute top-0 end-0 mx-2 my-2">
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-secondary border-white"
+            >
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
         </div>
         <div class="btn-group">
           <button
             type="button"
-            class="btn btn-sm btn-outline-secondary"
-            [disabled]="first"
-          >
-            <i class="bi bi-arrow-up"></i>
-          </button>
-          <button
-            type="button"
-            class="btn btn-sm btn-outline-secondary"
-            [disabled]="last"
+            class="btn btn-sm btn-outline-secondary border-white"
+            [hidden]="last"
           >
             <i class="bi bi-arrow-down"></i>
-          </button>
-          <button type="button" class="btn btn-sm btn-outline-secondary">
-            <i class="bi bi-trash"></i>
           </button>
         </div>
       </div>
       }
     </div>
-    <div class="col">
-      <div class="card mb-3 dont-card" style="width: 18rem">
+    <div class="col justify-content-end">
+      <div class="card mb-3 dont-card shadow">
         <div class="card-body">
           <div class="cart-title">
             <h3>Do not</h3>
@@ -52,18 +59,21 @@
         </div>
       </div>
       @for (item of red_list; track item) {
-      <div class="card mb-3" style="width: 18rem">
-        <div class="card-body">
+      <div class="card mb-3 shadow">
+        <div class="card-body position-relative">
           <h5 class="card-title">{{ item.title }}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{ item.subtitle }}</h6>
           <p class="card-text">
             {{ item.text }}
           </p>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-sm btn-outline-secondary">
-            <i class="bi bi-plus-circle"></i>
-          </button>
+          <div class="position-absolute top-0 end-0 mx-2 my-2">
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-secondary border-white"
+            >
+              <i class="bi bi-plus-circle"></i>
+            </button>
+          </div>
         </div>
       </div>
       }
