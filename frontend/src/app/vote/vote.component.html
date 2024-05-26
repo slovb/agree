@@ -4,20 +4,22 @@
 
 <div class="fluid-container">
   <div class="row">
-    <div class="col">
-      <div class="card mb-3 do-card shadow">
+    <div class="col-5">
+      <div class="card mb-3 yay-card shadow">
         <div class="card-body">
           <div class="cart-title">
-            <h3>Do</h3>
+            <h3>Yay</h3>
           </div>
         </div>
       </div>
       @for (item of green_list; track item; let first=$first, last=$last) {
-      <div class="card mb-3 shadow">
-        <div class="btn-group">
+      <div class="card mb-3 shadow position-relative">
+        <div
+          class="btn-group position-absolute top-0 start-0 translate-middle-x pe-5 pt-1"
+        >
           <button
             type="button"
-            class="btn btn-sm btn-outline-secondary border-white"
+            class="btn btn-sm btn-dark rounded-circle"
             [hidden]="first"
           >
             <i class="bi bi-arrow-up"></i>
@@ -25,24 +27,28 @@
         </div>
         <div class="card-body position-relative">
           <h5 class="card-title">{{ item.title }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{ item.subtitle }}</h6>
+          <h6 class="card-subtitle mb-2" style="opacity: 70%">
+            {{ item.subtitle }}
+          </h6>
           <p class="card-text">
             {{ item.text }}
           </p>
           <div class="position-absolute top-0 end-0 mx-2 my-2">
             <button
               type="button"
-              class="btn btn-sm btn-outline-secondary border-white"
+              class="btn btn-outline-secondary rounded-circle border-none"
             >
               <i class="bi bi-trash"></i>
             </button>
           </div>
         </div>
-        <div class="btn-group">
+        <div
+          class="btn-group position-absolute bottom-0 start-0 translate-middle-x pe-5 pb-1"
+        >
           <button
             type="button"
-            class="btn btn-sm btn-outline-secondary border-white"
-            [hidden]="last"
+            class="btn btn-sm btn-light rounded-circle"
+            [hidden]="!first"
           >
             <i class="bi bi-arrow-down"></i>
           </button>
@@ -50,11 +56,12 @@
       </div>
       }
     </div>
-    <div class="col justify-content-end">
-      <div class="card mb-3 dont-card shadow">
+    <div class="col"></div>
+    <div class="col-5 justify-content-end">
+      <div class="card mb-3 nay-card shadow">
         <div class="card-body">
           <div class="cart-title">
-            <h3>Do not</h3>
+            <h3>Nay</h3>
           </div>
         </div>
       </div>
@@ -62,16 +69,18 @@
       <div class="card mb-3 shadow">
         <div class="card-body position-relative">
           <h5 class="card-title">{{ item.title }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{ item.subtitle }}</h6>
+          <h6 class="card-subtitle mb-2" style="opacity: 70%">
+            {{ item.subtitle }}
+          </h6>
           <p class="card-text">
             {{ item.text }}
           </p>
           <div class="position-absolute top-0 end-0 mx-2 my-2">
             <button
               type="button"
-              class="btn btn-sm btn-outline-secondary border-white"
+              class="btn btn-outline-light rounded-circle border-none"
             >
-              <i class="bi bi-plus-circle"></i>
+              <i class="bi bi-plus"></i>
             </button>
           </div>
         </div>
