@@ -1,15 +1,21 @@
-<nav>
-  <a
-    routerLink="/vote"
-    routerLinkActive="active-link"
-    ariaCurrentWhenActive="page"
-    >Vote</a
-  >
-  <a
-    routerLink="/result"
-    routerLinkActive="active-link"
-    ariaCurrentWhenActive="page"
-    >Result</a
-  >
-</nav>
-<router-outlet />
+<div class="fluid-container mb-5 px-3">
+  <nav class="nav nav-underline">
+    <a
+      class="nav-link"
+      routerLink="/vote"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      >Vote</a
+    >
+    <a
+      class="nav-link"
+      routerLink="/result"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      >Result</a
+    >
+  </nav>
+</div>
+<div class="container">
+  <router-outlet />
+</div>

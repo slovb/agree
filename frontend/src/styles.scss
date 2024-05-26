@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #2980b9;
+  color: #ecf0f1;
+}
+
+a,
+a:active,
+a:hover {
+  color: #ecf0f1 !important;
+}
+
+.list-group-item-success.active {
+  background-color: #16a085;
+  border-color: #16a085;
+}
+
+.list-group-item-danger.active {
+  background-color: #c0392b;
+  border-color: #c0392b;
+}
