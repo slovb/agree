@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NavComponent } from './nav/nav.component';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ResultComponent } from './result/result.component';
 import { VoteComponent } from './vote/vote.component';
@@ -9,8 +8,8 @@ import { VoteComponent } from './vote/vote.component';
   selector: 'app-root',
   standalone: true,
   imports: [
+    RouterModule,
     RouterOutlet,
-    NavComponent,
     ResultComponent,
     VoteComponent,
     PageNotFoundComponent,
