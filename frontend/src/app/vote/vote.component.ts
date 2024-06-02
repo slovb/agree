@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 interface Item {
@@ -38,6 +39,9 @@ const red_list = [
   },
 ];
 
+const URL = 'http://localhost:5000/vote/';
+const headers = new HttpHeaders().set('Content-type', 'application/json');
+
 @Component({
   selector: 'app-vote',
   standalone: true,
@@ -49,8 +53,19 @@ export class VoteComponent {
   public green_list = new Array<Item>();
   public red_list = new Array<Item>();
 
+  constructor(private http: HttpClient) {}
+
   ngOnInit() {
-    this.green_list = green_list;
-    this.red_list = red_list;
+    this.get('test');
+  }
+
+  private get(id: string) {
+    this.http
+      .get(URL, { responseType: 'json', headers: headers })
+      .subscribe((res) => {
+        this.green_list = green_list;
+        this.red_list = red_list;
+        console.log(res);
+      });
   }
 }

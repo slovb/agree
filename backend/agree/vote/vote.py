@@ -1,8 +1,8 @@
-from flask import Blueprint
+from flask import Blueprint, jsonify
 
-bp = Blueprint("vote", __name__, url_prefix="/auth")
+bp = Blueprint("vote", __name__, url_prefix="/vote")
 
 
-@bp.route("/", methods=("GET"))
+@bp.route("/", methods=["GET"])
 def get():
-    return "hey"
+    return jsonify("heya!")

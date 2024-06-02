@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from flask_cors import CORS
 
 from .vote.vote import bp as vote_bp
 
@@ -8,6 +9,9 @@ from .vote.vote import bp as vote_bp
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
+    CORS(app)
+    # app.config["CORS_HEADERS"] = "Content-Type"
+
     app.config.from_mapping(SECRET_KEY="devdev")
 
     if test_config is None:
