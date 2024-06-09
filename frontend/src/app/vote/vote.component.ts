@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Idea } from '../../idea/idea';
 import { PollModule } from '../poll/poll.module';
 import { PollService } from '../poll/poll.service';
+import { YayNay } from '../yay-nay/yay-nay';
 import { YayNayModule } from '../yay-nay/yay-nay.module';
 import { IdeaComponent } from './idea/idea.component';
 
@@ -32,5 +33,41 @@ export class VoteComponent {
 
   vote() {
     this.poll.vote(this.ideaList);
+  }
+
+  moveUp(idea: Idea) {
+    let index = this.ideaList.indexOf(idea);
+    if (index === -1) {
+      return;
+    }
+    if (index > 0) {
+      // swap items
+      [this.ideaList[index - 1], this.ideaList[index]] = [
+        this.ideaList[index],
+        this.ideaList[index - 1],
+      ];
+      // do an extra if swapped with a NAY
+      if (this.ideaList[index].yaynay == YayNay.NAY) {
+        this.moveUp(idea);
+      }
+    }
+  }
+
+  moveDown(idea: Idea) {
+    let index = this.ideaList.indexOf(idea);
+    if (index === -1) {
+      return;
+    }
+    if (index + 1 < this.ideaList.length) {
+      // swap items
+      [this.ideaList[index + 1], this.ideaList[index]] = [
+        this.ideaList[index],
+        this.ideaList[index + 1],
+      ];
+      // do an extra if swapped with a NAY
+      if (this.ideaList[index].yaynay == YayNay.NAY) {
+        this.moveDown(idea);
+      }
+    }
   }
 }

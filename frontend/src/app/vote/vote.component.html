@@ -20,15 +20,19 @@
         </div>
       </div>
       <div class="card-col rounded-bottom p-3">
-        @for (item of ideaList|yays; track trackIdea; let first=$first) {
+        @for (idea of ideaList|yays; track trackIdea; let first=$first) {
         <div class="position-relative">
-          <vote-idea [idea]="item" [first]="first"></vote-idea>
+          <vote-idea [idea]="idea" [first]="first"></vote-idea>
           <!-- arrow up button -->
           <div
             class="btn-group position-absolute top-0 start-0 translate-middle-x pe-4 pt-3"
             [hidden]="first"
           >
-            <button type="button" class="btn btn-sm btn-light border-0">
+            <button
+              type="button"
+              class="btn btn-sm btn-light border-0"
+              (click)="moveUp(idea)"
+            >
               <i class="bi bi-arrow-up"></i>
             </button>
           </div>
@@ -37,7 +41,11 @@
             class="btn-group position-absolute bottom-0 start-0 translate-middle-x pe-4 pb-1"
             [hidden]="!first"
           >
-            <button type="button" class="btn btn-sm btn-light border-0">
+            <button
+              type="button"
+              class="btn btn-sm btn-light border-0"
+              (click)="moveDown(idea)"
+            >
               <i class="bi bi-arrow-down"></i>
             </button>
           </div>
@@ -57,8 +65,8 @@
       </div>
       <div class="card-col rounded-bottom p-3">
         <!-- nay cards -->
-        @for (item of ideaList|nays; track trackIdea) {
-        <vote-idea [idea]="item"></vote-idea>
+        @for (idea of ideaList|nays; track trackIdea) {
+        <vote-idea [idea]="idea"></vote-idea>
         }
       </div>
     </div>
