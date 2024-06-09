@@ -16,14 +16,12 @@ export class PollService {
   constructor(private http: HttpClient) {}
 
   public async get(id: string): Promise<Idea[]> {
-    let res = await firstValueFrom(
+    return await firstValueFrom(
       this.http.get<Idea[]>(POLL_URL, {
         responseType: 'json',
         headers: headers,
       })
     );
-    console.log(res);
-    return res;
   }
 
   public vote(ideas: Idea[]): void {
