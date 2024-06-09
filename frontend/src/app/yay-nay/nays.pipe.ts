@@ -1,10 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'nay',
+  name: 'nays',
   pure: true,
 })
-export class NayPipe implements PipeTransform {
+export class NaysPipe implements PipeTransform {
   transform(items: any[]): any {
     if (!items) {
       return items;

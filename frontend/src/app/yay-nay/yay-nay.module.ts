@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NayPipe } from './nay.pipe';
-import { YayPipe } from './yay.pipe';
+import { NaysPipe } from './nays.pipe';
+import { YaysPipe } from './yays.pipe';
 
 @NgModule({
-  declarations: [YayPipe, NayPipe],
-  exports: [YayPipe, NayPipe],
+  declarations: [YaysPipe, NaysPipe],
+  exports: [YaysPipe, NaysPipe],
   imports: [CommonModule],
 })
-export class YaynayModule {}
+export class YayNayModule {}

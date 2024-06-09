@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Idea } from '../../idea/idea';
 import { IdeaType } from '../../idea/idea-type';
 import { YayNay } from '../yay-nay/yay-nay';
-import { YaynayModule } from '../yay-nay/yay-nay.module';
+import { YayNayModule } from '../yay-nay/yay-nay.module';
 import { IdeaComponent } from './idea/idea.component';
 
 const item_list = [
@@ -55,7 +55,7 @@ const headers = new HttpHeaders().set('Content-type', 'application/json');
 @Component({
   selector: 'app-vote',
   standalone: true,
-  imports: [YaynayModule, IdeaComponent],
+  imports: [YayNayModule, IdeaComponent],
   templateUrl: './vote.component.html',
   styleUrl: './vote.component.scss',
 })
