@@ -7,6 +7,7 @@ import { PollModule } from './poll.module';
 
 const item_list = [
   {
+    id: 'asdfasdf',
     title: 'Pizza',
     yaynay: YayNay.yay,
     subtitle: 'Round joy',
@@ -14,26 +15,31 @@ const item_list = [
     motions: ['Good pizza place'],
   },
   {
+    id: 'a0sdfasdf',
     title: 'Taco',
     yaynay: YayNay.yay,
   },
   {
+    id: 'as1dfasdf',
     title: 'Burger',
     yaynay: YayNay.yay,
     subtitle: 'YumBun',
     text: 'Et harum quidem rerum facilis est et expedita distinctio.',
   },
   {
+    id: 'asd2fasdf',
     title: 'Thai',
     yaynay: YayNay.yay,
     text: 'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?',
   },
   {
+    id: 'asdf3asdf',
     title: 'Sushi',
     yaynay: YayNay.nay,
     text: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   },
   {
+    id: 'asdfa4sdf',
     title: 'Pizza',
     yaynay: YayNay.nay,
     subtitle: 'Round joy',
@@ -42,7 +48,8 @@ const item_list = [
   },
 ];
 
-const URL = 'http://localhost:5000/vote/';
+const POLL_URL = 'http://localhost:5000/poll/';
+const VOTE_URL = 'http://localhost:5000/vote/';
 const headers = new HttpHeaders().set('Content-type', 'application/json');
 
 @Injectable({
@@ -53,8 +60,18 @@ export class PollService {
 
   public async get(id: string): Promise<Idea[]> {
     let res = await firstValueFrom(
-      this.http.get(URL, { responseType: 'json', headers: headers })
+      this.http.get(POLL_URL, { responseType: 'json', headers: headers })
     );
     return item_list;
+  }
+
+  public vote(ideas: Idea[]): void {
+    let yays = ideas.filter((idea) => idea.yaynay === YayNay.yay);
+    let ids = yays.map((idea) => idea.id);
+    firstValueFrom(
+      this.http.post(VOTE_URL, ids, { responseType: 'json', headers: headers })
+    ).then((res) => {
+      console.log(res);
+    });
   }
 }

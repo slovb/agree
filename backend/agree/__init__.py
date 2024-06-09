@@ -3,6 +3,7 @@ import os
 from flask import Flask
 from flask_cors import CORS
 
+from .poll.poll import bp as poll_bp
 from .vote.vote import bp as vote_bp
 
 
@@ -27,6 +28,7 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    app.register_blueprint(poll_bp)
     app.register_blueprint(vote_bp)
 
     return app
