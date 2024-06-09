@@ -20,7 +20,8 @@
         </div>
       </div>
       <div class="card-col rounded-bottom p-3">
-        @for (idea of ideaList|yays; track trackIdea; let first=$first) {
+        @for (idea of ideaList|yays; track trackIdea; let first=$first,
+        last=$last) {
         <div class="position-relative">
           <vote-idea [idea]="idea" [first]="first"></vote-idea>
           <!-- arrow up button -->
@@ -39,7 +40,7 @@
           <!-- arrow down button -->
           <div
             class="btn-group position-absolute bottom-0 start-0 translate-middle-x pe-4 pb-1"
-            [hidden]="!first"
+            [hidden]="!first || (first && last)"
           >
             <button
               type="button"
