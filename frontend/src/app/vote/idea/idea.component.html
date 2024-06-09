@@ -8,7 +8,14 @@
     <p class="card-text">
       {{ idea.text }}
     </p>
-    @if (idea.type === 'detailed') { }
+    @if (idea.motions) {
+    <ul>
+      @for (motion of idea.motions; track motion) {
+      <li>{{ motion }}</li>
+      <!-- TODO: add easy to suggest changes monad -->
+      }
+    </ul>
+    }
     <!-- trash|add button -->
     <div class="position-absolute top-0 end-0 mx-2 my-2">
       @if (idea.yaynay === 'yay') {
@@ -27,6 +34,7 @@
       </button>
       }
     </div>
+    <!-- TOOD: add suggest change monad for making a slightly different copy -->
   </div>
   @if (idea.yaynay === 'yay') {
   <!-- arrow up button -->
