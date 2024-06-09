@@ -15,51 +15,8 @@
         </div>
       </div>
       <div class="card-col rounded-bottom p-3">
-        @for (item of item_list|yay; track item; let first=$first, last=$last) {
-        <div class="card mb-3 position-relative">
-          <!-- arrow up button -->
-          <div
-            class="btn-group position-absolute top-0 start-0 translate-middle-x pe-4 pt-3"
-          >
-            <button
-              type="button"
-              class="btn btn-sm btn-light border-0"
-              [hidden]="first"
-            >
-              <i class="bi bi-arrow-up"></i>
-            </button>
-          </div>
-          <div class="card-body position-relative">
-            <h5 class="card-title">{{ item.title }}</h5>
-            <h6 class="card-subtitle mb-2" style="opacity: 70%">
-              {{ item.subtitle }}
-            </h6>
-            <p class="card-text">
-              {{ item.text }}
-            </p>
-            <!-- remove button -->
-            <div class="position-absolute top-0 end-0 mx-2 my-2">
-              <button
-                type="button"
-                class="btn btn-outline-secondary rounded-circle border-none"
-              >
-                <i class="bi bi-trash"></i>
-              </button>
-            </div>
-          </div>
-          <!-- arrow down button -->
-          <div
-            class="btn-group position-absolute bottom-0 start-0 translate-middle-x pe-4 pb-1"
-          >
-            <button
-              type="button"
-              class="btn btn-sm btn-light border-0"
-              [hidden]="!first"
-            >
-              <i class="bi bi-arrow-down"></i>
-            </button>
-          </div>
-        </div>
+        @for (item of item_list|yay; track item; let first=$first) {
+        <vote-idea [idea]="item" [first]="first"></vote-idea>
         }
       </div>
     </div>
@@ -76,26 +33,7 @@
       <div class="card-col rounded-bottom p-3">
         <!-- nay cards -->
         @for (item of item_list|nay; track item) {
-        <div class="card mb-3">
-          <div class="card-body position-relative">
-            <h5 class="card-title">{{ item.title }}</h5>
-            <h6 class="card-subtitle mb-2" style="opacity: 70%">
-              {{ item.subtitle }}
-            </h6>
-            <p class="card-text">
-              {{ item.text }}
-            </p>
-            <!-- add button -->
-            <div class="position-absolute top-0 end-0 mx-2 my-2">
-              <button
-                type="button"
-                class="btn btn-outline-secondary rounded-circle border-none"
-              >
-                <i class="bi bi-plus"></i>
-              </button>
-            </div>
-          </div>
-        </div>
+        <vote-idea [idea]="item"></vote-idea>
         }
       </div>
     </div>
