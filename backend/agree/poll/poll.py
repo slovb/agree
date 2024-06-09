@@ -82,7 +82,14 @@ actionList = [
     },
 ]
 
+mock_response = {
+    "id": "testpoll",
+    "start": 0,
+    "stop": 6,
+    "actions": actionList,
+}
+
 
 @bp.route("/", methods=["GET"])
 def get():
-    return jsonify(actionList)
+    return jsonify(mock_response)
