@@ -1,5 +1,10 @@
 <h1 class>Vote</h1>
 
+<div class="d-grid gap-2 d-flex">
+  <button type="button" class="btn btn-light" (click)="vote()">Vote</button>
+  <button type="button" class="btn btn-dark">Make suggestion</button>
+</div>
+
 <p>List doos in order of preference.</p>
 
 <div class="fluid-container mb-5">
@@ -15,7 +20,7 @@
         </div>
       </div>
       <div class="card-col rounded-bottom p-3">
-        @for (item of item_list|yays; track item; let first=$first) {
+        @for (item of ideaList|yays; track item; let first=$first) {
         <div class="position-relative">
           <vote-idea [idea]="item" [first]="first"></vote-idea>
           <!-- arrow up button -->
@@ -52,7 +57,7 @@
       </div>
       <div class="card-col rounded-bottom p-3">
         <!-- nay cards -->
-        @for (item of item_list|nays; track item) {
+        @for (item of ideaList|nays; track item) {
         <vote-idea [idea]="item"></vote-idea>
         }
       </div>

@@ -13,7 +13,7 @@ import { IdeaComponent } from './idea/idea.component';
   styleUrl: './vote.component.scss',
 })
 export class VoteComponent {
-  public item_list = new Array<Idea>();
+  public ideaList = new Array<Idea>();
 
   constructor(private poll: PollService) {}
 
@@ -22,6 +22,10 @@ export class VoteComponent {
   }
 
   private get(id: string) {
-    this.poll.get(id).then((ideaList) => (this.item_list = ideaList));
+    this.poll.get(id).then((ideaList) => (this.ideaList = ideaList));
+  }
+
+  public vote() {
+    this.poll.vote(this.ideaList);
   }
 }
