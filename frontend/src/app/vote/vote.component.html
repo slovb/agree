@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="card-col rounded-bottom p-3">
-        @for (item of green_list; track item; let first=$first, last=$last) {
+        @for (item of item_list|yay; track item; let first=$first, last=$last) {
         <div class="card mb-3 position-relative">
           <!-- arrow up button -->
           <div
@@ -75,7 +75,7 @@
       </div>
       <div class="card-col rounded-bottom p-3">
         <!-- nay cards -->
-        @for (item of red_list; track item) {
+        @for (item of item_list|nay; track item) {
         <div class="card mb-3">
           <div class="card-body position-relative">
             <h5 class="card-title">{{ item.title }}</h5>
