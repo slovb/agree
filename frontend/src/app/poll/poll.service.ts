@@ -25,7 +25,7 @@ export class PollService {
   }
 
   public vote(ideas: Idea[]): void {
-    let yays = ideas.filter((idea) => idea.yaynay === YayNay.yay);
+    let yays = ideas.filter((idea) => idea.yaynay === YayNay.YAY);
     let ids = yays.map((idea) => idea.id);
     firstValueFrom(
       this.http.post(VOTE_URL, ids, { responseType: 'json', headers: headers })

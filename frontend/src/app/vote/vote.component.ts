@@ -25,7 +25,12 @@ export class VoteComponent {
     this.poll.get(id).then((ideaList) => (this.ideaList = ideaList));
   }
 
-  public vote() {
+  trackIdea(index: number, idea: Idea): [string, string] {
+    // TODO: Rework this so the pipes can be pure
+    return [idea.id, idea.yaynay];
+  }
+
+  vote() {
     this.poll.vote(this.ideaList);
   }
 }

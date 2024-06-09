@@ -1,4 +1,4 @@
 export enum YayNay {
-  yay = 'yay',
-  nay = 'nay',
+  YAY = 'yay',
+  NAY = 'nay',
 }

@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="card-col rounded-bottom p-3">
-        @for (item of ideaList|yays; track item; let first=$first) {
+        @for (item of ideaList|yays; track trackIdea; let first=$first) {
         <div class="position-relative">
           <vote-idea [idea]="item" [first]="first"></vote-idea>
           <!-- arrow up button -->
@@ -57,7 +57,7 @@
       </div>
       <div class="card-col rounded-bottom p-3">
         <!-- nay cards -->
-        @for (item of ideaList|nays; track item) {
+        @for (item of ideaList|nays; track trackIdea) {
         <vote-idea [idea]="item"></vote-idea>
         }
       </div>
