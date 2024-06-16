@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Idea } from '../../../idea/idea';
-import { YayNay } from '../../yay-nay/yay-nay';
+import { Idea } from '../../idea/idea';
+import { YayNay } from '../yay-nay/yay-nay';
 
 @Component({
   selector: 'vote-idea',

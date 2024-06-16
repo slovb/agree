@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Idea } from '../../idea/idea';
+import { IdeaComponent } from '../idea/idea.component';
 import { PollModule } from '../poll/poll.module';
 import { PollService } from '../poll/poll.service';
 import { YayNay } from '../yay-nay/yay-nay';
 import { YayNayModule } from '../yay-nay/yay-nay.module';
-import { IdeaComponent } from './idea/idea.component';
 
 @Component({
   selector: 'app-vote',
