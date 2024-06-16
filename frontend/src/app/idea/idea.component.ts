@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { Idea } from '../../idea/idea';
 import { YayNay } from '../yay-nay/yay-nay';
+import { IdeaTweakComponent } from './tweak/idea.tweak.component';
 
 @Component({
-  selector: 'vote-idea',
+  selector: 'app-idea',
   standalone: true,
-  imports: [],
+  imports: [IdeaTweakComponent],
   templateUrl: './idea.component.html',
   styleUrl: './idea.component.scss',
 })

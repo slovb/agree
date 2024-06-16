@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Idea } from '../../idea/idea';
 import { IdeaComponent } from '../idea/idea.component';
+import { IdeaNewComponent } from '../idea/new/idea.new.component';
 import { PollModule } from '../poll/poll.module';
 import { PollService } from '../poll/poll.service';
 import { YayNay } from '../yay-nay/yay-nay';
@@ -9,7 +10,7 @@ import { YayNayModule } from '../yay-nay/yay-nay.module';
 @Component({
   selector: 'app-vote',
   standalone: true,
-  imports: [YayNayModule, IdeaComponent, PollModule],
+  imports: [YayNayModule, IdeaComponent, IdeaNewComponent, PollModule],
   templateUrl: './vote.component.html',
   styleUrl: './vote.component.scss',
 })

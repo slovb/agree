@@ -3,9 +3,18 @@
 <p class="pb-4">List doos in order of preference.</p>
 
 <div class="d-grid gap-2 d-flex">
-  <button type="button" class="btn btn-light" (click)="vote()">Vote</button>
-  <button type="button" class="btn btn-dark">Make suggestion</button>
+  <button type="button" class="btn btn-dark" (click)="vote()">Vote</button>
+  <button
+    type="button"
+    class="btn btn-dark"
+    data-bs-toggle="modal"
+    data-bs-target="#new-idea"
+  >
+    Make suggestion
+  </button>
 </div>
+
+<idea-new></idea-new>
 
 <div class="fluid-container mb-5">
   <div class="row">
@@ -23,7 +32,7 @@
         @for (idea of ideaList|yays; track trackIdea; let first=$first,
         last=$last) {
         <div class="position-relative">
-          <vote-idea [idea]="idea" [first]="first"></vote-idea>
+          <app-idea [idea]="idea" [first]="first"></app-idea>
           <!-- arrow up button -->
           <div
             class="btn-group position-absolute top-0 start-0 translate-middle-x pe-4 pt-3"
@@ -67,7 +76,7 @@
       <div class="card-col rounded-bottom p-3">
         <!-- nay cards -->
         @for (idea of ideaList|nays; track trackIdea) {
-        <vote-idea [idea]="idea"></vote-idea>
+        <app-idea [idea]="idea"></app-idea>
         }
       </div>
     </div>
