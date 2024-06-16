@@ -7,17 +7,28 @@
       {{ idea.subtitle }}
       } @else { &nbsp; }
     </h6>
-    @if (idea.motions) {
-    <ul>
+    <ul class="list-group py-2">
       @for (motion of idea.motions; track motion) {
-      <li>{{ motion }}</li>
-      <!-- TODO: add easy to suggest changes monad -->
+      <li class="list-group-item">{{ motion }}</li>
       }
     </ul>
+    <div class="collapse" id="text-{{ idea.id }}">
+      <p class="card-text pb-3">
+        {{ idea.text }}
+      </p>
+    </div>
+    @if (idea.text) {
+    <div class="d-grid">
+      <a
+        class="btn btn-outline-info"
+        data-bs-toggle="collapse"
+        href="#text-{{ idea.id }}"
+        role="button"
+      >
+        <span class="text-dark">&hellip;</span>
+      </a>
+    </div>
     }
-    <p class="card-text">
-      {{ idea.text }}
-    </p>
     <!-- trash|add button -->
     <div class="position-absolute top-0 end-0 mx-2 my-2">
       <button
