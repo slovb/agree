@@ -3,11 +3,10 @@
   <div class="card-body position-relative">
     <h5 class="card-title">{{ idea.title }}</h5>
     <h6 class="card-subtitle mb-2" style="opacity: 70%">
+      @if (idea.subtitle) {
       {{ idea.subtitle }}
+      } @else { &nbsp; }
     </h6>
-    <p class="card-text">
-      {{ idea.text }}
-    </p>
     @if (idea.motions) {
     <ul>
       @for (motion of idea.motions; track motion) {
@@ -16,6 +15,9 @@
       }
     </ul>
     }
+    <p class="card-text">
+      {{ idea.text }}
+    </p>
     <!-- trash|add button -->
     <div class="position-absolute top-0 end-0 mx-2 my-2">
       <button
