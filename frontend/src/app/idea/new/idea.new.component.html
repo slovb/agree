@@ -11,7 +11,59 @@
         ></button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <form [formGroup]="newForm">
+          <div class="form-floating mb-3">
+            <input
+              id="new-title"
+              type="text"
+              class="form-control"
+              formControlName="title"
+              required
+            />
+            <label for="title" class="form-label">Title:</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              id="new-subtitle"
+              type="text"
+              class="form-control"
+              formControlName="subtitle"
+            />
+            <label for="subtitle" class="form-label">Subtitle:</label>
+          </div>
+          <div class="form-floating mb-3">
+            <textarea
+              id="new-text"
+              type="text"
+              class="form-control"
+              formControlName="text"
+            ></textarea>
+            <label for="new-text" class="form-label">Text:</label>
+          </div>
+          @for (motion of motions.controls; track motion; let last=$last,
+          i=$index) {
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" id="new-motion-{{ i }}" />
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              [hidden]="!last"
+              (click)="addMotion()"
+            >
+              <i class="bi bi-plus"></i>
+            </button>
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              [hidden]="last"
+              (click)="removeMotion(i)"
+            >
+              <i class="bi bi-trash"></i>
+            </button>
+            <!-- TODO: not exactly the interaction I want, the add button should be more implicit as an open row at the end -->
+          </div>
+          }
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
