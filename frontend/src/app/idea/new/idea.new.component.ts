@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -17,6 +17,8 @@ export class IdeaNewComponent {
     text: [''],
   });
 
+  isWaiting = signal(false);
+
   constructor(private _formBuilder: FormBuilder) {}
 
   addMotion(): void {
@@ -25,5 +27,15 @@ export class IdeaNewComponent {
 
   removeMotion(index: number): void {
     this.motions.removeAt(index);
+  }
+
+  onSubmit(): void {
+    this.isWaiting.set(true);
+  }
+
+  reset(): void {
+    this.newForm.reset();
+    this.motions.clear();
+    this.addMotion();
   }
 }
