@@ -1,3 +1,11 @@
+<button
+  type="button"
+  class="btn btn-dark"
+  data-bs-toggle="modal"
+  data-bs-target="#new-idea"
+>
+  Make suggestion
+</button>
 <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
   <div class="modal fade" id="new-idea" tabindex="-1">
     <div class="modal-dialog">
@@ -65,6 +73,7 @@
         </div>
         <div class="modal-footer">
           <button
+            id="close-new-idea"
             type="button"
             class="btn btn-secondary"
             data-bs-dismiss="modal"

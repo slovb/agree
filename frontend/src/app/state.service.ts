@@ -18,6 +18,10 @@ export class StateService {
     this._state.update((ideas) => [...ideas, idea]);
   }
 
+  addIdeaFirst(idea: Idea): void {
+    this._state.update((ideas) => [idea, ...ideas]);
+  }
+
   removeIdea(idea: Idea): void {
     this._state.update((ideas) => ideas.filter((item) => item.id !== idea.id));
   }

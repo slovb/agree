@@ -46,6 +46,7 @@ export class VoteComponent {
   }
 
   moveUp(idea: Idea) {
+    // TODO: this got broken at the move to state service, needs rewriting, possibly moving into the service
     let index = this._ideaList.indexOf(idea);
     if (index === -1) {
       return;
@@ -64,6 +65,7 @@ export class VoteComponent {
   }
 
   moveDown(idea: Idea) {
+    // TODO: this got broken at the move to state service, needs rewriting, possibly moving into the service
     let index = this._ideaList.indexOf(idea);
     if (index === -1) {
       return;

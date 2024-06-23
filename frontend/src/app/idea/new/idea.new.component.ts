@@ -43,8 +43,21 @@ export class IdeaNewComponent {
     const idea = this.newForm.value as Idea;
     idea.id = 'new' + temp;
     idea.yaynay = YayNay.YAY;
+    let motions: string[] = [];
+    this.motions.getRawValue().forEach((motion) => {
+      if (motion !== null && motion !== '') {
+        motions.push(motion);
+      }
+    });
+    // TODO: Neither of these get the value from the forms....
+    console.log(motions);
+    console.log(this.motions.getRawValue());
+    console.log(this.newForm.value);
+    idea.motions = motions;
+    // idea.motions = idea.motions?.filter((motion) => motion !== '');
+
     temp += 1;
-    this._state.addIdea(idea);
+    this._state.addIdeaFirst(idea);
     this.reset();
     this.close();
     this.isWaiting.set(false);
@@ -57,6 +70,7 @@ export class IdeaNewComponent {
   }
 
   close(): void {
-    // TODO: close the modal
+    // This hack stinks... But otherwise either ts or bootstrap cries foul
+    document.getElementById('close-new-idea')?.click();
   }
 }
