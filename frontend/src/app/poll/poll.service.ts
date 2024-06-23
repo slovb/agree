@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { Idea } from '../../idea/idea';
 import { YayNay } from '../yay-nay/yay-nay';
-import { PollModule } from './poll.module';
 
 const POLL_URL = 'http://localhost:5000/poll/';
 const VOTE_URL = 'http://localhost:5000/vote/';
@@ -23,14 +22,14 @@ interface PollResponse {
 }
 
 @Injectable({
-  providedIn: PollModule,
+  providedIn: 'root',
 })
 export class PollService {
-  constructor(private http: HttpClient) {}
+  constructor(private _http: HttpClient) {}
 
-  public async get(id: string): Promise<Idea[]> {
+  async get(id: string): Promise<Idea[]> {
     let res = await firstValueFrom(
-      this.http.get<PollResponse>(POLL_URL, {
+      this._http.get<PollResponse>(POLL_URL, {
         responseType: 'json',
         headers: headers,
       })
@@ -42,11 +41,11 @@ export class PollService {
     return ideas;
   }
 
-  public vote(ideas: Idea[]): void {
+  vote(ideas: Idea[]): void {
     let yays = ideas.filter((idea) => idea.yaynay === YayNay.YAY);
     let ids = yays.map((idea) => idea.id);
     firstValueFrom(
-      this.http.post(VOTE_URL, ids, { responseType: 'json', headers: headers })
+      this._http.post(VOTE_URL, ids, { responseType: 'json', headers: headers })
     ).then((res) => {
       console.log(res);
     });

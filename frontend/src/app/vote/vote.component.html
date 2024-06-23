@@ -29,8 +29,7 @@
         </div>
       </div>
       <div class="card-col rounded-bottom p-3">
-        @for (idea of ideaList|yays; track trackIdea; let first=$first,
-        last=$last) {
+        @for (idea of yayIdeas(); track idea.id; let first=$first, last=$last) {
         <div class="position-relative">
           <app-idea [idea]="idea" [first]="first"></app-idea>
           <!-- arrow up button -->
@@ -75,7 +74,7 @@
       </div>
       <div class="card-col rounded-bottom p-3">
         <!-- nay cards -->
-        @for (idea of ideaList|nays; track trackIdea) {
+        @for (idea of nayIdeas(); track idea.id) {
         <app-idea [idea]="idea"></app-idea>
         }
       </div>

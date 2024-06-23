@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { Idea } from '../../idea/idea';
 import { IdeaComponent } from '../idea/idea.component';
 import { IdeaNewComponent } from '../idea/new/idea.new.component';
 import { PollModule } from '../poll/poll.module';
 import { PollService } from '../poll/poll.service';
+import { StateService } from '../state.service';
 import { YayNay } from '../yay-nay/yay-nay';
 import { YayNayModule } from '../yay-nay/yay-nay.module';
 
@@ -15,58 +16,66 @@ import { YayNayModule } from '../yay-nay/yay-nay.module';
   styleUrl: './vote.component.scss',
 })
 export class VoteComponent {
-  public ideaList = new Array<Idea>();
+  private _ideaList = new Array<Idea>();
+  ideas = computed(() => this._state.ideas());
+  yayIdeas = computed(() =>
+    this._state.ideas().filter((idea) => idea.yaynay == YayNay.YAY)
+  );
+  nayIdeas = computed(() =>
+    this._state.ideas().filter((idea) => idea.yaynay == YayNay.NAY)
+  );
+  isWaiting = signal(false);
 
-  constructor(private poll: PollService) {}
+  constructor(private _poll: PollService, private _state: StateService) {}
 
   ngOnInit() {
-    this.get('test');
+    this._get('test');
   }
 
-  private get(id: string) {
-    this.poll.get(id).then((ideaList) => (this.ideaList = ideaList));
-  }
-
-  trackIdea(index: number, idea: Idea): [string, string] {
-    // TODO: Rework this so the pipes can be pure
-    return [idea.id, idea.yaynay];
+  private _get(id: string) {
+    this.isWaiting.set(true);
+    this._poll.get(id).then((ideaList) => {
+      this._ideaList = ideaList;
+      this._state.setIdeas(ideaList);
+      this.isWaiting.set(false);
+    });
   }
 
   vote() {
-    this.poll.vote(this.ideaList);
+    this._poll.vote(this._ideaList);
   }
 
   moveUp(idea: Idea) {
-    let index = this.ideaList.indexOf(idea);
+    let index = this._ideaList.indexOf(idea);
     if (index === -1) {
       return;
     }
     if (index > 0) {
       // swap items
-      [this.ideaList[index - 1], this.ideaList[index]] = [
-        this.ideaList[index],
-        this.ideaList[index - 1],
+      [this._ideaList[index - 1], this._ideaList[index]] = [
+        this._ideaList[index],
+        this._ideaList[index - 1],
       ];
       // do an extra if swapped with a NAY
-      if (this.ideaList[index].yaynay == YayNay.NAY) {
+      if (this._ideaList[index].yaynay == YayNay.NAY) {
         this.moveUp(idea);
       }
     }
   }
 
   moveDown(idea: Idea) {
-    let index = this.ideaList.indexOf(idea);
+    let index = this._ideaList.indexOf(idea);
     if (index === -1) {
       return;
     }
-    if (index + 1 < this.ideaList.length) {
+    if (index + 1 < this._ideaList.length) {
       // swap items
-      [this.ideaList[index + 1], this.ideaList[index]] = [
-        this.ideaList[index],
-        this.ideaList[index + 1],
+      [this._ideaList[index + 1], this._ideaList[index]] = [
+        this._ideaList[index],
+        this._ideaList[index + 1],
       ];
       // do an extra if swapped with a NAY
-      if (this.ideaList[index].yaynay == YayNay.NAY) {
+      if (this._ideaList[index].yaynay == YayNay.NAY) {
         this.moveDown(idea);
       }
     }
