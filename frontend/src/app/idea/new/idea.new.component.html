@@ -51,7 +51,12 @@
           @for (motion of motions.controls; track motion; let last=$last,
           i=$index) {
           <div class="input-group mb-3">
-            <input type="text" class="form-control" id="new-motion-{{ i }}" />
+            <input
+              type="text"
+              class="form-control"
+              id="new-motion-{{ i }}"
+              [formControl]="motion"
+            />
             <button
               class="btn btn-outline-secondary"
               type="button"
