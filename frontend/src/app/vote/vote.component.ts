@@ -46,40 +46,10 @@ export class VoteComponent {
   }
 
   moveUp(idea: Idea) {
-    // TODO: this got broken at the move to state service, needs rewriting, possibly moving into the service
-    let index = this._ideaList.indexOf(idea);
-    if (index === -1) {
-      return;
-    }
-    if (index > 0) {
-      // swap items
-      [this._ideaList[index - 1], this._ideaList[index]] = [
-        this._ideaList[index],
-        this._ideaList[index - 1],
-      ];
-      // do an extra if swapped with a NAY
-      if (this._ideaList[index].yaynay == YayNay.NAY) {
-        this.moveUp(idea);
-      }
-    }
+    this._state.moveUp(idea);
   }
 
   moveDown(idea: Idea) {
-    // TODO: this got broken at the move to state service, needs rewriting, possibly moving into the service
-    let index = this._ideaList.indexOf(idea);
-    if (index === -1) {
-      return;
-    }
-    if (index + 1 < this._ideaList.length) {
-      // swap items
-      [this._ideaList[index + 1], this._ideaList[index]] = [
-        this._ideaList[index],
-        this._ideaList[index + 1],
-      ];
-      // do an extra if swapped with a NAY
-      if (this._ideaList[index].yaynay == YayNay.NAY) {
-        this.moveDown(idea);
-      }
-    }
+    this._state.moveDown(idea);
   }
 }
