@@ -49,10 +49,6 @@ export class IdeaNewComponent {
         motions.push(motion);
       }
     });
-    // TODO: Neither of these get the value from the forms....
-    console.log(motions);
-    console.log(this.motions.getRawValue());
-    console.log(this.newForm.value);
     idea.motions = motions;
     // idea.motions = idea.motions?.filter((motion) => motion !== '');
 
