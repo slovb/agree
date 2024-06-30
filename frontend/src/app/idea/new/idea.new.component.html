@@ -39,14 +39,15 @@
             />
             <label for="subtitle" class="form-label">Subtitle:</label>
           </div>
-          <div class="form-floating mb-3">
+          <div class="mb-3">
+            <label for="new-text" class="form-label">Details:</label>
             <textarea
               id="new-text"
               type="text"
               class="form-control"
+              rows="3"
               formControlName="text"
             ></textarea>
-            <label for="new-text" class="form-label">Text:</label>
           </div>
           @for (motion of motions.controls; track motion; let last=$last,
           i=$index) {

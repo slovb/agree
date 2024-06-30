@@ -1,5 +1,4 @@
 @if (idea) {
-<idea-tweak [idea]="idea"></idea-tweak>
 <div class="card mb-3">
   <div class="card-body position-relative">
     <h5 class="card-title">{{ idea.title }}</h5>
@@ -34,14 +33,7 @@
     <div class="position-absolute top-0 end-0 mx-2 my-2">
       <div class="btn-group">
         <!-- tweak button -->
-        <button
-          type="button"
-          class="btn btn-outline-secondary border-0"
-          data-bs-toggle="modal"
-          attr.data-bs-target="#tweak-idea-{{ idea.id }}"
-        >
-          <i class="bi bi-pencil-square"></i>
-        </button>
+        <idea-tweak [idea]="idea"></idea-tweak>
         <!-- trash|add button -->
         <button
           type="button"

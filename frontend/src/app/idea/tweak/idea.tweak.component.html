@@ -1,24 +1,109 @@
-<div class="modal fade" id="tweak-idea-{{ id }}" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Tweak idea</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+<button
+  type="button"
+  class="btn btn-outline-secondary border-0"
+  data-bs-toggle="modal"
+  attr.data-bs-target="#tweak-{{ id }}"
+>
+  <i class="bi bi-pencil-square"></i>
+</button>
+<form [formGroup]="tweakForm" (ngSubmit)="onSubmit()">
+  <div class="modal fade" id="tweak-{{ id }}" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Tweak idea</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-floating mb-3">
+            <input
+              id="tweak-title-{{ id }}"
+              type="text"
+              class="form-control"
+              formControlName="title"
+              required
+            />
+            <label for="tweak-title-{{ id }}" class="form-label">Title:</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              id="tweak-subtitle-{{ id }}"
+              type="text"
+              class="form-control"
+              formControlName="subtitle"
+            />
+            <label for="tweak-subtitle-{{ id }}" class="form-label"
+              >Subtitle:</label
+            >
+          </div>
+          <div class="mb-3">
+            <label for="tweak-text-{{ id }}" class="form-label">Details:</label>
+            <textarea
+              id="tweak-text-{{ id }}"
+              type="text"
+              class="form-control"
+              rows="3"
+              formControlName="text"
+            ></textarea>
+          </div>
+          @for (motion of motions.controls; track motion; let last=$last,
+          i=$index) {
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="tweak-motion-{{ id }}-{{ i }}"
+              [formControl]="motion"
+            />
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              [hidden]="last"
+              (click)="removeMotion(i)"
+            >
+              <i class="bi bi-trash"></i>
+            </button>
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              [hidden]="!last"
+              (click)="addMotion()"
+            >
+              <i class="bi bi-plus"></i>
+            </button>
+          </div>
+          }
+        </div>
+        <div class="modal-footer">
+          <button
+            id="close-{{ id }}"
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="button" class="btn btn-warning" (click)="reset()">
+            Reset
+          </button>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="tweakForm.invalid || isWaiting()"
+          >
+            Save changes @if(isWaiting()) {
+            <div class="spinner-border spinner-border-sm" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            }
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</form>
