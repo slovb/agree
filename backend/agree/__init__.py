@@ -4,7 +4,7 @@ from flask import Flask
 from flask_cors import CORS
 
 from .poll.poll import bp as poll_bp
-from .vote.vote import bp as vote_bp
+from .rank.rank import bp as rank_bp
 
 
 def create_app(test_config=None):
@@ -29,6 +29,6 @@ def create_app(test_config=None):
         pass
 
     app.register_blueprint(poll_bp)
-    app.register_blueprint(vote_bp)
+    app.register_blueprint(rank_bp)
 
     return app
