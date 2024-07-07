@@ -12,6 +12,7 @@ export class ResultComponent {
   constructor(private _state: StateService, private _route: ActivatedRoute) {}
 
   ngOnInit() {
+    // TODO: Rework this so that it is set by subscribing in main
     this._state.setId(this._route.snapshot.paramMap.get('id') ?? undefined);
   }
 }

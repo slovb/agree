@@ -12,6 +12,7 @@ export class PollListComponent implements OnInit {
   constructor(private _state: StateService) {}
 
   ngOnInit() {
+    // TODO: Rework this so that it is set by subscribing in main
     this._state.setId(undefined);
   }
 }

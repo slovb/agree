@@ -32,6 +32,7 @@ export class RankComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // TODO: Rework this so that it is set by subscribing in main
     this._state.setId(this._route.snapshot.paramMap.get('id') ?? undefined);
     this._get();
   }
