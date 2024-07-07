@@ -1,11 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { Idea } from '../../idea/idea';
+import { Idea } from '../idea/idea';
 import { YayNay } from '../yay-nay/yay-nay';
 
 const POLL_URL = 'http://localhost:5000/poll/';
-const VOTE_URL = 'http://localhost:5000/vote/';
+const RANK_URL = 'http://localhost:5000/rank/';
 const headers = new HttpHeaders().set('Content-type', 'application/json');
 
 interface Action {
@@ -41,11 +41,11 @@ export class PollService {
     return ideas;
   }
 
-  vote(ideas: Idea[]): void {
+  rank(ideas: Idea[]): void {
     let yays = ideas.filter((idea) => idea.yaynay === YayNay.YAY);
     let ids = yays.map((idea) => idea.id);
     firstValueFrom(
-      this._http.post(VOTE_URL, ids, { responseType: 'json', headers: headers })
+      this._http.post(RANK_URL, ids, { responseType: 'json', headers: headers })
     ).then((res) => {
       console.log(res);
     });

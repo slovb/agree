@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Idea } from '../../idea/idea';
 import { StateService } from '../state.service';
 import { YayNay } from '../yay-nay/yay-nay';
+import { Idea } from './idea';
 import { IdeaTweakComponent } from './tweak/idea.tweak.component';
 
 @Component({
@@ -9,7 +9,6 @@ import { IdeaTweakComponent } from './tweak/idea.tweak.component';
   standalone: true,
   imports: [IdeaTweakComponent],
   templateUrl: './idea.component.html',
-  styleUrl: './idea.component.scss',
 })
 export class IdeaComponent {
   @Input() idea?: Idea;

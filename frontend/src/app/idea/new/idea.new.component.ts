@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Idea } from '../../../idea/idea';
 import { StateService } from '../../state.service';
 import { YayNay } from '../../yay-nay/yay-nay';
+import { Idea } from '../idea';
 
 let temp = 0;
 
@@ -11,7 +11,6 @@ let temp = 0;
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './idea.new.component.html',
-  styleUrl: './idea.new.component.scss',
 })
 export class IdeaNewComponent {
   motions = this._formBuilder.array([this._formBuilder.control('')]);

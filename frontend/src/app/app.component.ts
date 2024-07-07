@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RankComponent } from './rank/rank.component';
 import { ResultComponent } from './result/result.component';
-import { VoteComponent } from './vote/vote.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import { VoteComponent } from './vote/vote.component';
     RouterModule,
     RouterOutlet,
     ResultComponent,
-    VoteComponent,
+    RankComponent,
     PageNotFoundComponent,
   ],
   templateUrl: './app.component.html',

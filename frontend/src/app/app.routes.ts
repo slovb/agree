@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RankComponent } from './rank/rank.component';
 import { ResultComponent } from './result/result.component';
-import { VoteComponent } from './vote/vote.component';
 
 export const routes: Routes = [
-  { path: 'vote', component: VoteComponent },
+  { path: 'rank', component: RankComponent },
   { path: 'result', component: ResultComponent },
-  { path: '', redirectTo: '/vote', pathMatch: 'full' },
+  { path: '', redirectTo: '/rank', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];

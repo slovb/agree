@@ -1,8 +1,7 @@
 import { Component, computed, signal } from '@angular/core';
-import { Idea } from '../../idea/idea';
+import { Idea } from '../idea/idea';
 import { IdeaComponent } from '../idea/idea.component';
 import { IdeaNewComponent } from '../idea/new/idea.new.component';
-import { PollModule } from '../poll/poll.module';
 import { PollService } from '../poll/poll.service';
 import { StateService } from '../state.service';
 import { YayNay } from '../yay-nay/yay-nay';
@@ -11,11 +10,10 @@ import { YayNayModule } from '../yay-nay/yay-nay.module';
 @Component({
   selector: 'app-vote',
   standalone: true,
-  imports: [YayNayModule, IdeaComponent, IdeaNewComponent, PollModule],
-  templateUrl: './vote.component.html',
-  styleUrl: './vote.component.scss',
+  imports: [YayNayModule, IdeaComponent, IdeaNewComponent],
+  templateUrl: './rank.component.html',
 })
-export class VoteComponent {
+export class RankComponent {
   private _ideaList = new Array<Idea>();
   ideas = computed(() => this._state.ideas());
   yayIdeas = computed(() =>
@@ -41,8 +39,8 @@ export class VoteComponent {
     });
   }
 
-  vote() {
-    this._poll.vote(this._ideaList);
+  rank() {
+    this._poll.rank(this._ideaList);
   }
 
   moveUp(idea: Idea) {

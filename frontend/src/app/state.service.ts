@@ -1,5 +1,5 @@
 import { Injectable, computed, signal } from '@angular/core';
-import { Idea } from '../idea/idea';
+import { Idea } from './idea/idea';
 import { YayNay } from './yay-nay/yay-nay';
 
 @Injectable({
