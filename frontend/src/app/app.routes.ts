@@ -5,9 +5,10 @@ import { RankComponent } from './rank/rank.component';
 import { ResultComponent } from './result/result.component';
 
 export const routes: Routes = [
-  { path: 'rank', component: RankComponent },
-  { path: 'result', component: ResultComponent },
-  { path: 'polls', component: PollListComponent },
-  { path: '', redirectTo: '/polls', pathMatch: 'full' },
+  { path: 'poll/:id/rank', component: RankComponent },
+  { path: 'poll/:id/result', component: ResultComponent },
+  { path: 'poll/:id', redirectTo: 'poll/:id/result' },
+  { path: 'list', component: PollListComponent },
+  { path: '', redirectTo: '/list', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
