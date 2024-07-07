@@ -1,0 +1,38 @@
+<div class="fluid-container mb-5 px-3">
+  <nav class="nav nav-underline">
+    @if (idSignal()) {
+    <a
+      class="nav-link"
+      routerLink="/list"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      ><i class="bi bi-caret-left-fill"></i
+    ></a>
+    <a
+      class="nav-link"
+      [routerLink]="['/rank', idSignal()]"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      >Rank</a
+    >
+    <a
+      class="nav-link"
+      [routerLink]="['/result', idSignal()]"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      >Result</a
+    >
+    } @else {
+    <a
+      class="nav-link"
+      routerLink="/list"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      >List</a
+    >
+    }
+  </nav>
+</div>
+<div class="container">
+  <router-outlet />
+</div>

@@ -9,7 +9,14 @@ export class StateService {
   private _state = signal<Idea[]>([]);
   ideas = computed(() => this._state());
 
+  private _idSignal = signal<string | undefined>(undefined);
+  idSignal = computed(() => this._idSignal());
+
   constructor() {}
+
+  setId(id: string | undefined) {
+    this._idSignal.set(id);
+  }
 
   setIdeas(ideas: Idea[]): void {
     this._state.set(ideas);

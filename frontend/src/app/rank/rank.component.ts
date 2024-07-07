@@ -1,4 +1,5 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, OnInit, computed, signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Idea } from '../idea/idea';
 import { IdeaComponent } from '../idea/idea.component';
 import { IdeaNewComponent } from '../idea/new/idea.new.component';
@@ -13,7 +14,7 @@ import { YayNayModule } from '../yay-nay/yay-nay.module';
   imports: [YayNayModule, IdeaComponent, IdeaNewComponent],
   templateUrl: './rank.component.html',
 })
-export class RankComponent {
+export class RankComponent implements OnInit {
   private _ideaList = new Array<Idea>();
   ideas = computed(() => this._state.ideas());
   yayIdeas = computed(() =>
@@ -24,19 +25,29 @@ export class RankComponent {
   );
   isWaiting = signal(false);
 
-  constructor(private _poll: PollService, private _state: StateService) {}
+  constructor(
+    private _poll: PollService,
+    private _state: StateService,
+    private _route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this._get('test');
+    this._state.setId(this._route.snapshot.paramMap.get('id') ?? undefined);
+    this._get();
   }
 
-  private _get(id: string) {
+  private _get() {
     this.isWaiting.set(true);
-    this._poll.get(id).then((ideaList) => {
-      this._ideaList = ideaList;
-      this._state.setIdeas(ideaList);
-      this.isWaiting.set(false);
-    });
+    const id = this._state.idSignal();
+    if (id !== undefined) {
+      this._poll.get(id).then((ideaList) => {
+        this._ideaList = ideaList;
+        this._state.setIdeas(ideaList);
+        this.isWaiting.set(false);
+      });
+    } else {
+      throw new Error('undefined id');
+    }
   }
 
   rank() {
