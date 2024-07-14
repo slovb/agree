@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { Idea } from '../model/idea';
+import { YayNay } from '../model/yay-nay';
 import { StateService } from '../state.service';
-import { YayNay } from '../yay-nay/yay-nay';
-import { Idea } from './idea';
 import { IdeaTweakComponent } from './tweak/idea.tweak.component';
 
 @Component({

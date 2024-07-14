@@ -1,10 +1,11 @@
 <nav>
   <ul>
+    @for(pair of idpolls(); track pair.id) {
     <li>
-      <a class="nav-link" [routerLink]="['/rank', 'test1']">Noms of choice</a>
+      <a class="nav-link" [routerLink]="['/rank', pair.id]">{{
+        pair.poll.title()
+      }}</a>
     </li>
-    <li>
-      <a class="nav-link" [routerLink]="['/rank', 'test2']">Doos to do</a>
-    </li>
+    }
   </ul>
 </nav>

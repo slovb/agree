@@ -1,21 +1,19 @@
 import { Component, OnInit, computed, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Idea } from '../idea/idea';
 import { IdeaComponent } from '../idea/idea.component';
 import { IdeaNewComponent } from '../idea/new/idea.new.component';
+import { Idea } from '../model/idea';
+import { YayNay } from '../model/yay-nay';
 import { PollService } from '../poll/poll.service';
 import { StateService } from '../state.service';
-import { YayNay } from '../yay-nay/yay-nay';
-import { YayNayModule } from '../yay-nay/yay-nay.module';
 
 @Component({
   selector: 'app-vote',
   standalone: true,
-  imports: [YayNayModule, IdeaComponent, IdeaNewComponent],
+  imports: [IdeaComponent, IdeaNewComponent],
   templateUrl: './rank.component.html',
 })
 export class RankComponent implements OnInit {
-  private _ideaList = new Array<Idea>();
   ideas = computed(() => this._state.ideas());
   yayIdeas = computed(() =>
     this._state.ideas().filter((idea) => idea.yaynay == YayNay.YAY)
@@ -41,9 +39,8 @@ export class RankComponent implements OnInit {
     this.isWaiting.set(true);
     const id = this._state.idSignal();
     if (id !== undefined) {
-      this._poll.get(id).then((ideaList) => {
-        this._ideaList = ideaList;
-        this._state.setIdeas(ideaList);
+      this._poll.get(id).then((poll) => {
+        this._state.setIdeas(poll.ideas());
         this.isWaiting.set(false);
       });
     } else {
@@ -52,7 +49,7 @@ export class RankComponent implements OnInit {
   }
 
   rank() {
-    this._poll.rank(this._ideaList);
+    this._poll.rank(this.ideas());
   }
 
   moveUp(idea: Idea) {

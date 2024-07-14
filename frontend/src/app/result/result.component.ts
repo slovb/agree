@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StateService } from '../state.service';
 
@@ -8,7 +8,7 @@ import { StateService } from '../state.service';
   imports: [],
   templateUrl: './result.component.html',
 })
-export class ResultComponent {
+export class ResultComponent implements OnInit {
   constructor(private _state: StateService, private _route: ActivatedRoute) {}
 
   ngOnInit() {

@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Idea } from '../../model/idea';
+import { YayNay } from '../../model/yay-nay';
 import { StateService } from '../../state.service';
-import { YayNay } from '../../yay-nay/yay-nay';
-import { Idea } from '../idea';
 
 let temp = 0;
 

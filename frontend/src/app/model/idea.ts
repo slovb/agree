@@ -1,4 +1,4 @@
-import { YayNay } from '../yay-nay/yay-nay';
+import { YayNay } from './yay-nay';
 
 export interface Idea {
   id: string;
